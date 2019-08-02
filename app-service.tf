@@ -20,7 +20,17 @@ resource "azurerm_app_service" "default" {
   site_config = {
     always_on        = true
     linux_fx_version = "DOTNETCORE|2.2"
-    app_command_line = "dotnet demo-aspnetcore-webapp.dll --urls http://0.0.0.0:8080"
-    virtual_network_name = "${azurerm_virtual_network.app_service.name}"
+    app_command_line = "dotnet appservice.dll"
+  }
+
+  app_settings {
+    "VMURL" = "http://${azurerm_network_interface.vm1.private_ip_address}"
+    "WEBSITE_HTTPLOGGING_RETENTION_DAYS" = 7
+  }
+
+  lifecycle {
+    ignore_changes = [
+      "site_config",
+    ]
   }
 }

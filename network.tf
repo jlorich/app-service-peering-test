@@ -46,15 +46,19 @@ resource "azurerm_subnet" "vm_default" {
 
 # Peerings
 resource "azurerm_virtual_network_peering" "app_service_to_vm" {
-  name                      = "peer-to-vm"
-  resource_group_name       = "${azurerm_resource_group.default.name}"
-  virtual_network_name      = "${azurerm_virtual_network.app_service.name}"
-  remote_virtual_network_id = "${azurerm_virtual_network.virtual_machine.id}"
+  name                         = "peer-to-vm"
+  resource_group_name          = "${azurerm_resource_group.default.name}"
+  virtual_network_name         = "${azurerm_virtual_network.app_service.name}"
+  remote_virtual_network_id    = "${azurerm_virtual_network.virtual_machine.id}"
+  allow_virtual_network_access = true
+  allow_forwarded_traffic      = true
 }
 
 resource "azurerm_virtual_network_peering" "vm_to_app_service" {
-  name                      = "peer-to-app-service"
-  resource_group_name       = "${azurerm_resource_group.default.name}"
-  virtual_network_name      = "${azurerm_virtual_network.virtual_machine.name}"
-  remote_virtual_network_id = "${azurerm_virtual_network.app_service.id}"
+  name                         = "peer-to-app-service"
+  resource_group_name          = "${azurerm_resource_group.default.name}"
+  virtual_network_name         = "${azurerm_virtual_network.virtual_machine.name}"
+  remote_virtual_network_id    = "${azurerm_virtual_network.app_service.id}"
+  allow_virtual_network_access = true
+  allow_forwarded_traffic      = true
 }

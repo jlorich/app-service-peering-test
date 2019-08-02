@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "default" {
   name     = "${var.name}-${var.environment}-rg"
-  location = "West US 2"
+  location = "West US"
 }
