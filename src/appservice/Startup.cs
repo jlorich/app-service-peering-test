@@ -40,6 +40,8 @@ namespace appservice
                 
                 var url = Configuration.GetValue<string>("VmUrl");
                 client.Timeout = TimeSpan.FromSeconds(3);
+                
+                context.Response.ContentType = "text/plain";
 
                 try {
                     var res = await client.GetAsync(url);

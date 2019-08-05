@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/aaa12833-b81d-4390-bcf0-da7def4e549c/resourceGroups/app-service-vnet-peering-test-rg/providers/Microsoft.Web/sites/mtcden-app-service-vnet-peering-test",
+    // "appService.defaultWebAppToDeploy": "/subscriptions/aaa12833-b81d-4390-bcf0-da7def4e549c/resourceGroups/app-service-vnet-peering-test-rg/providers/Microsoft.Web/sites/mtcden-app-service-vnet-peering-test",
     "appService.deploySubpath": "src\\appservice\\bin\\Debug\\netcoreapp2.2\\publish"
 }
